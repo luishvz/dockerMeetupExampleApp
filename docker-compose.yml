@@ -1,0 +1,17 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  flask-app:
+    image: flask-app
+    build: .
+    ports:
+      - 5000:5000
+    external_links:
+      - flaskApp-postgresql:postgresql
+    volumes:
+      - .:/code
+  postgres:
+    image: postgres:9.5.4
+    ports:
+      - 5432:5432
